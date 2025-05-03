@@ -19,13 +19,6 @@
 #define MOTOR_LEFT_2 5  //Right Motor MA2
 #define MOTOR_LEFT_ENABLED 6  //Right Motor Enable Pin EA
 
-// Analog as Digital
-#define ir1 14
-#define ir2 15
-#define ir3 16
-#define ir4 17
-#define ir5 18
-
 //*************************************************//
 
 void setup() {
@@ -60,6 +53,12 @@ void loop() {
     motor_left_stop();  
     motor_right_stop();
     delay(3000);
+    motor_left_forward(speed_fast);
+    motor_right_forward(speed_slow);
+    delay(3000);
+    motor_left_stop();  
+    motor_right_stop();
+    delay(3000);
 }
 
 void motor_left_forward(int speed) {
@@ -85,4 +84,3 @@ void motor_right_stop() {
   digitalWrite(MOTOR_RIGHT_3, LOW);
   digitalWrite(MOTOR_RIGHT_4, LOW);
 }
-
