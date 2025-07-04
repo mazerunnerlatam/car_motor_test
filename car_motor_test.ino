@@ -11,13 +11,26 @@
 
 // LMRIOS I change de motors Left is Right and Right is Left because all the logic was mixed
 // motor B cable colors: orange(pin 3), yellow(pin 2), green(pin 4)
-#define MOTOR_RIGHT_3 4  //Right Motor MB1
-#define MOTOR_RIGHT_4 2  //Left Motor MB2
-#define MOTOR_RIGHT_ENABLED 3 //Left Motor Enable Pin EB
-// moto A cable colors: blue(pin 5), violet(pin 7), white(pin 6)
-#define MOTOR_LEFT_1 7  //Right Motor MA1
-#define MOTOR_LEFT_2 5  //Right Motor MA2
-#define MOTOR_LEFT_ENABLED 6  //Right Motor Enable Pin EA
+// #define MOTOR_RIGHT_3 4  //Right Motor MB1
+// #define MOTOR_RIGHT_4 2  //Left Motor MB2
+// #define MOTOR_RIGHT_ENABLED 3 //Left Motor Enable Pin EB
+// // moto A cable colors: blue(pin 5), violet(pin 7), white(pin 6)
+// #define MOTOR_LEFT_1 7  //Right Motor MA1
+// #define MOTOR_LEFT_2 5  //Right Motor MA2
+// #define MOTOR_LEFT_ENABLED 6  //Right Motor Enable Pin EA
+
+// LMRIOS ArduinoMega Config
+// motor A cable colors: grey(pin 2), violet(pin 24), blue(pin 25)
+#define MOTOR_LEFT_1 24  //Left Motor IN1
+#define MOTOR_LEFT_2 25  //Left Motor IN2
+#define MOTOR_LEFT_ENABLED 2  //Left Motor ENA
+// motor B cable colors: green(pin 26), yellow(pin 27), orange(pin 3)
+#define MOTOR_RIGHT_3 26  //Right Motor IN1
+#define MOTOR_RIGHT_4 27  //Right Motor IN2
+#define MOTOR_RIGHT_ENABLED 3 //Left Motor ENB
+
+
+
 
 //*************************************************//
 
@@ -42,23 +55,35 @@ void setup() {
 
 }
 void loop() {
-  int speed_fast = 255;
-  int speed_slow = 86;    
+  int speed_fast =  128;
+  int speed_slow = 96;    
     
-  Serial.println("going forward with full speed ");
+  Serial.print("going forward: LEFT slow: ");
+  Serial.print(speed_slow);
+  Serial.print(" - RIGHT fast: ");
+  Serial.println(speed_fast);
 
     motor_left_forward(speed_slow);
     motor_right_forward(speed_fast);
     delay(3000);
+  Serial.println("Stop");
     motor_left_stop();  
     motor_right_stop();
-    delay(3000);
+    delay(1000);
+  
+    
+  Serial.print("going forward: LEFT fast: ");
+  Serial.print(speed_fast);
+  Serial.print(" - RIGHT slow: ");
+  Serial.println(speed_slow);
+  
     motor_left_forward(speed_fast);
     motor_right_forward(speed_slow);
     delay(3000);
+  Serial.println("Stop");
     motor_left_stop();  
     motor_right_stop();
-    delay(3000);
+    delay(1000);
 }
 
 void motor_left_forward(int speed) {
