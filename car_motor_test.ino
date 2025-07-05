@@ -55,9 +55,33 @@ void setup() {
 
 }
 void loop() {
-  int speed_fast =  128;
   int speed_slow = 96;    
-    
+  int speed_fast =  speed_slow + 32;
+/*  
+int cantidad_de_repeticiones = 10;
+int valor_minimo = 50;
+for (int i = 0; i < cantidad_de_repeticiones; i++) {
+  Serial.print("going forward: LEFT slow: ");
+  Serial.print(speed_slow);
+  Serial.print(" - RIGHT slow: ");
+  Serial.println(speed_slow);
+  motor_left_forward(speed_slow);
+  motor_right_forward(speed_slow);
+  delay(3000);
+  Serial.println("Stop");
+  motor_left_stop();  
+  motor_right_stop();
+  delay(1000);
+  
+  speed_slow -= 8; // Decrementa speed_slow en 8
+  
+  // Opcional: puedes agregar una condición para evitar que speed_slow sea menor que un valor mínimo
+  if (speed_slow < valor_minimo) {
+    speed_slow = valor_minimo;
+  }
+}
+*/
+
   Serial.print("going forward: LEFT slow: ");
   Serial.print(speed_slow);
   Serial.print(" - RIGHT fast: ");
